@@ -26,7 +26,7 @@ public class Caso {
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
+    @WebMethod
     
     private BinarySearchTree loadBST(){
         try {    
@@ -110,7 +110,7 @@ public class Caso {
         
     }
     
-    
+    @WebMethod(operationName = "addCC")
     public String addCC(String txt) {
         try{
             CasoClinico temp = new CasoClinico(txt);
@@ -124,10 +124,12 @@ public class Caso {
         }
         
     }
+    @WebMethod(operationName = "removeCC")
     public String removeCC(String txt) {
         try{
             BinarySearchTree newBST = loadBST();
-            newBST.delete(txt);    
+            newBST.displayPre();
+            newBST.delete(txt);
             newBST.save();    
             return "Success";
         } catch (Exception e) {

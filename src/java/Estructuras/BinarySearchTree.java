@@ -37,7 +37,7 @@ public class BinarySearchTree {
     public boolean isMember(String id){
         NodoArbolBinario current = root;
         while(current!=null){
-            if(current.getData().getName()==id){
+            if(current.getData().getName().equals(id)){
                     return true;
             }else if(current.getData().getName().compareTo(id)>0){
                     current = current.left;
@@ -50,7 +50,7 @@ public class BinarySearchTree {
     public NodoArbolBinario getMember(String id){
         NodoArbolBinario current = root;
         while(current!=null){
-            if(current.getData().getName()==id){
+            if(current.getData().getName().equals(id)){
                     return current;
             }else if(current.getData().getName().compareTo(id)>0){
                     current = current.left;
@@ -66,7 +66,7 @@ public class BinarySearchTree {
         NodoArbolBinario current = root;
         
         while(current!=null){
-            if(current.getData().getName()==id){
+            if(current.getData().getName().equals(id)){
                 if (current.getData() instanceof CasoClinico)
                 {
                     return (CasoClinico) current.getData();
@@ -85,7 +85,7 @@ public class BinarySearchTree {
         NodoArbolBinario parent = root;
         NodoArbolBinario current = root;
         boolean isLeftChild = false;
-        while(current.getData().getName()!=id){
+        while(!(current.getData().getName().equals(id))){
             parent = current;
             if(current.getData().getName().compareTo(id)>0){
                 isLeftChild = true;
@@ -160,6 +160,7 @@ public class BinarySearchTree {
             successsorParent.left = successsor.right;
             successsor.right = deleleNode.right;
         }
+        System.out.println("deleted!");
         return successsor;
     }
     public void insert(AbstractBinary id){

@@ -10,7 +10,7 @@ package Estructuras;
  * @author Alexis
  */
 public class Medicamento extends AbstractBinary{
-    String Price;
+    public String Price;
     
     
     public Medicamento (String nombre, String precio){

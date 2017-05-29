@@ -12,8 +12,8 @@ package Estructuras;
 public class NodoArbolBinario {
 
     private AbstractBinary data;
-    NodoArbolBinario left;
-    NodoArbolBinario right;	
+    public NodoArbolBinario left;
+    public NodoArbolBinario right;	
     
     public NodoArbolBinario(AbstractBinary data){
         this.data = data;
