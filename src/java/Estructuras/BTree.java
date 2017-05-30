@@ -664,7 +664,7 @@ public class BTree<T extends Comparable<T>> {
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File(System.getProperty("user.dir") +"\\"+ Filename +".xml"));
+		StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Clientes.xml"));
 
 		// Output to console for testing
 		// StreamResult result = new StreamResult(System.out);
@@ -805,7 +805,7 @@ public class BTree<T extends Comparable<T>> {
         }
         public String getAll()
         {
-            System.out.println(nombre);
+            //System.out.println(nombre);
             return nombre + ">" + email + ">" + Active+ ">" + Float.toString(money);
         }
         public void addMoney(float monto)

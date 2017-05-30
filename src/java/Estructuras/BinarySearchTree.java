@@ -491,7 +491,7 @@ public class BinarySearchTree {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\MediTec\\Casos_Clinicos.xml"));
+            StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Casos_Clinicos.xml"));
 
             // Output to console for testing
             //StreamResult result = new StreamResult(System.out);

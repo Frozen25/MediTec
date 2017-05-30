@@ -364,7 +364,7 @@ public class ArbolAVL{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(System.getProperty("user.dir") +"\\Citas.xml"));
+            StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Citas.xml"));
 
             // Output to console for testing
             //StreamResult result = new StreamResult(System.out);

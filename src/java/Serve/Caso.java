@@ -30,7 +30,7 @@ public class Caso {
     
     private BinarySearchTree loadBST(){
         try {    
-            File fXmlFile = new File("D:\\0-Tec\\Datos 1\\proyecto 2\\MediTec\\Casos_Clinicos.xml");
+            File fXmlFile = new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Casos_Clinicos.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
@@ -65,8 +65,10 @@ public class Caso {
                         String[] parts = examenes.split(";");
                         for(int i=0;i<parts.length;i++)
                         {
+                            if ((!(parts[i].equals("")))&&(!(parts[i].equals(" ")))){
                             String[] dat = parts[i].split("_");
                             CasoTemp.addExamenes(dat[0], dat[1]);
+                        }
                         }
                     }
  
@@ -77,8 +79,10 @@ public class Caso {
                         String[] parts = medics.split(";");
                         for(int i=0;i<parts.length;i++)
                         {
+                            if ((!(parts[i].equals("")))&&(!(parts[i].equals(" ")))){
                             String[] dat = parts[i].split("_");
                             CasoTemp.addMedicamentos(dat[0], dat[1]);
+                        }
                         }
                     }
 
@@ -139,6 +143,19 @@ public class Caso {
         
     }
     
+    @WebMethod(operationName = "getCC")
+    public String getCC(String txt) {
+        try{
+            BinarySearchTree newBST = loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+            String result = newBST.getCaso(txt).getInfo();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        }
+        
+    }
     
     
     

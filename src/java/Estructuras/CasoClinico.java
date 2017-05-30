@@ -23,35 +23,25 @@ public class CasoClinico extends AbstractBinary{
     @Override
     public String getInfo()
     {   
-        return Examenes.displayIn() +" , "+ Medicamentos.displayIn();
-    }
-        /*
-        if ((Examenes.displayIn() != null)&&(Medicamentos.displayIn() != null)){
-            return Examenes.displayIn() +","+ Medicamentos.displayIn();
-    }
-        if((Examenes.displayIn() == null)&&(Medicamentos.displayIn() == null))
-            return ", ";
-        if((Examenes.displayIn() == null)&&(Medicamentos.displayIn() != null))
-            return " ," + Medicamentos.displayIn();
-        if ((Examenes.displayIn() != null)&&(Medicamentos.displayIn() == null))
-            return Examenes.displayIn() +", ";
-        else
-        {
-            return " , ";
+        if (!(Medicamentos.displayIn().equals(""))){
+            return Examenes.displayIn() +" ,"+ Medicamentos.displayIn();
+        }
+        else{
+            return Examenes.displayIn() +" , "+ Medicamentos.displayIn();
         }
     }
-    */
+
     
     public void addExamenes(String examen, String precio)
     {
-        if (Examenes.isMember(examen)) {
+        if (!(Examenes.isMember(examen))) {
             Examen newExamen = new Examen(examen, precio);    
             Examenes.insert(newExamen);
         }
     }
     public void addMedicamentos(String medicamento, String precio)
     {
-        if (Medicamentos.isMember(medicamento)){
+        if (!(Medicamentos.isMember(medicamento))){
             Medicamento newMedicamento = new Medicamento(medicamento, precio);
             Medicamentos.insert(newMedicamento);
         }
