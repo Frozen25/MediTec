@@ -88,7 +88,7 @@ public class Clientes {
 
         
     } 
-    @WebMethod
+    @WebMethod(operationName = "addCliente")
     public String addCliente(String txt) {
         try{
             
@@ -103,7 +103,7 @@ public class Clientes {
         
     }
     
-    
+    @WebMethod(operationName = "getData")
     public String getData(String cliente)
     {
         try{
@@ -119,7 +119,7 @@ public class Clientes {
         }
     }
     
-    
+    @WebMethod(operationName = "removeCliente")
     public String removeCliente(String txt) {
         try{
             
