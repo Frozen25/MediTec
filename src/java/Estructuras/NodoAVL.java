@@ -1,18 +1,18 @@
 package Estructuras;
 
 public class NodoAVL{
-    public Cita cita;
+    public cita cita;
     public int Factbalance;
     public NodoAVL Derecho, Izquierdo;
 	
-	public NodoAVL (Cita cit){
+	public NodoAVL (cita cit){
 		cita = cit;
 		Factbalance = 0;
 		Derecho=null;
 		Izquierdo = null;
 	}
         
-        public Cita getData(){
+        public cita getData(){
         return cita;
             }
 }

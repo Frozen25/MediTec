@@ -6,7 +6,7 @@
 package Serve;
 
 import Estructuras.ArbolAVL;
-import Estructuras.Cita;
+import Estructuras.cita;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -27,7 +27,7 @@ public class Citas {
         try{
             
             ArbolAVL newAVL = ArbolAVL.loadAVL();
-            Cita citatemp = new Cita(Integer.parseInt(numero), nombre);
+            cita citatemp = new cita(Integer.parseInt(numero), nombre);
             newAVL.Insercion(citatemp);
             newAVL.save();    
             return "Success";
