@@ -46,7 +46,7 @@ public class CasoClinico extends AbstractBinary{
             Medicamentos.insert(newMedicamento);
         }
     }
-    public void removeExamenen(String examen)
+    public void removeExamen(String examen)
     {
         if (Examenes.isMember(examen)) {
             Examenes.delete(examen);

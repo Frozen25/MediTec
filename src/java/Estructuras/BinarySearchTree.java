@@ -354,6 +354,32 @@ public class BinarySearchTree {
         }
     }
     
+    
+    public String searchCC(String id){
+        lookstack = "";
+        
+        int depth = 0;
+        String path = "";
+        searchCC(root,id, depth, path );
+                    
+        
+        return lookstack;
+        
+    }
+    
+    private void searchCC(NodoArbolBinario root, String id, int depth ,String path){
+        if(root!=null){
+            searchCC(root.left,  id, depth +1 , path+ "-" + root.getData().getName()   );
+            if (root.getData().getName().contains(id))
+            {
+                lookstack += ( root.getData().getName()+ "," 
+                         + "," + Integer.toString(depth) + "," + Integer.toString( findHeight(root) ) +
+                        "," + Integer.toString(depth) +  "," + path +"-"+ root.getData().getName() +">"     );
+            }
+            searchCC(root.right,  id, depth+1, path+ "-" + root.getData().getName()  );
+        }
+    }
+    
     private int findHeight(NodoArbolBinario current) {
     if (current == null) {
         return -1;

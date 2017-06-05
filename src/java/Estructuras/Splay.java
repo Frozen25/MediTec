@@ -423,6 +423,11 @@ public class Splay{
   }
   
   //retorna si es miembro un elemento
+  public boolean Miembro(String dat){
+      return Miembro(dat,raiz);
+  }
+  
+  
   public boolean Miembro (String dat,NodoSplay rai){
   	raiz=rai;
     NodoSplay hijo = raiz;
@@ -443,7 +448,12 @@ public class Splay{
   {
     searchresult = "";
     InorderSearch(raiz, id);
+    
+    
     if (!searchresult.equals("")){
+        return searchresult;
+        
+        /*
         String doctores [] = searchresult.split(">");
 ////////ORDENAMIENTO DE DOCTORES
         for (int top = 1 ; top < doctores.length ; top++)
@@ -481,8 +491,8 @@ public class Splay{
         }
         //resultado = resultado.substring(0, resultado.length()-1);
         String x = Doctores.toString();
-        return x;
-        
+        return Doctores;
+        */
 
     }
     
@@ -598,7 +608,7 @@ public void save()
       
   }
   
-  public Splay loadSplay(){
+  public static Splay loadSplay(){
         try {
 
             File fXmlFile = new File(direccion+"\\Doctores.xml");

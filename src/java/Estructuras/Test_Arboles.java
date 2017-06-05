@@ -69,7 +69,7 @@ public class Test_Arboles {
                     String Numero = eElement.getElementsByTagName("Numero").item(0).getTextContent();
                     String monto = eElement.getElementsByTagName("MontoPagar").item(0).getTextContent();
 
-                    cita tempCita =new cita( Integer.parseInt(Numero), nombre, Float.valueOf(monto));
+                    Cita tempCita =new Cita( Integer.parseInt(Numero), nombre, Float.valueOf(monto));
                     
                     nuevoAVL.Insercion(tempCita);
 
@@ -95,12 +95,12 @@ public class Test_Arboles {
     if (x==8)
     {
         ArbolAVL nuevo=new ArbolAVL();
-        cita cit1 =new cita(1, "Juan");
-        cita cit2 =new cita(2, "Pedro");
-        cita cit3 =new cita(3, "lucas");
-        cita cit4 =new cita(4, "ema");
-        cita cit5 =new cita(5, "lola");
-        cita cit6 =new cita(6, "paco");
+        Cita cit1 =new Cita(1, "Juan");
+        Cita cit2 =new Cita(2, "Pedro");
+        Cita cit3 =new Cita(3, "lucas");
+        Cita cit4 =new Cita(4, "ema");
+        Cita cit5 =new Cita(5, "lola");
+        Cita cit6 =new Cita(6, "paco");
         nuevo.Insercion(cit1);
         nuevo.Insercion(cit2);
         nuevo.Insercion(cit3);
@@ -420,7 +420,7 @@ public class Test_Arboles {
         pato.addExamenes("peso", "100");
         System.out.println(pato.getInfo());
         b.insert(pato);
-        b.getCaso("pato").removeExamenen("peso");
+        b.getCaso("pato").removeExamen("peso");
         //b.display();		
         System.out.println("\n look ");
         System.out.println(b.look(""));

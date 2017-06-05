@@ -21,16 +21,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.*;
+import org.w3c.dom.NodeList;
 
 //Arbol AVl
 public class ArbolAVL{
     public String impresor="";
     public NodoAVL A;
     public boolean Hh;
+    private static final String direccion = "D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data";
 	//Guarda las rotaciones en un archivo
 	
 	//Inserta un elemento en el arbol
-	public void Insercion (cita cita){
+	public void Insercion (Cita cita){
 		if ((!Miembro (cita,A))){
 			NodoAVL info = new NodoAVL(cita);
 			A=InsertarBalanceado(A,info);
@@ -185,7 +187,7 @@ public class ArbolAVL{
 		return N;
 	}
 	//Para verificar si esta el autor
-	boolean Miembro(cita cita, NodoAVL R){
+	boolean Miembro(Cita cita, NodoAVL R){
 		NodoAVL Aux = R;
 		boolean miembro = false;
 		while (Aux != null){
@@ -256,7 +258,7 @@ public class ArbolAVL{
 	}
 	
 	//buscar elemento
-	public boolean find(cita cit){
+	public boolean find(Cita cit){
         NodoAVL current = A;
         while(current!=null){
             if(current.cita==cit){
@@ -272,7 +274,7 @@ public class ArbolAVL{
         return false;
     }
 	
-    public cita get(int num){
+    public Cita get(int num){
         NodoAVL current = A;
         while(current!=null){
             if(current.cita.numCita==num){
@@ -364,7 +366,7 @@ public class ArbolAVL{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Citas.xml"));
+            StreamResult result = new StreamResult(new File(direccion + "\\Citas.xml"));
 
             // Output to console for testing
             //StreamResult result = new StreamResult(System.out);
@@ -382,6 +384,63 @@ public class ArbolAVL{
       }
         
     }
-	
-	
+    
+    public static ArbolAVL loadAVL(){
+    
+    try {
+
+            File fXmlFile = new File(direccion +"\\Citas.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+
+            doc.getDocumentElement().normalize();
+
+            //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+            NodeList nList = doc.getElementsByTagName("Cita");
+
+            //System.out.println("----------------------------");
+            
+            ArbolAVL nuevoAVL =new ArbolAVL();
+            
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                org.w3c.dom.Node nNode = nList.item(temp);
+
+                //System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+
+                if (nNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    
+                    String nombre = eElement.getElementsByTagName("Nombre").item(0).getTextContent();
+                    String Numero = eElement.getElementsByTagName("Numero").item(0).getTextContent();
+                    String monto = eElement.getElementsByTagName("MontoPagar").item(0).getTextContent();
+
+                    Cita tempCita =new Cita( Integer.parseInt(Numero), nombre, Float.valueOf(monto));
+                    
+                    nuevoAVL.Insercion(tempCita);
+
+
+
+                    }
+            }
+            
+            //print tree
+            //nuevoAVL.InordenAVL();
+            return nuevoAVL;
+            //newBST.save("name");
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    
+    }
 }
+	
+	

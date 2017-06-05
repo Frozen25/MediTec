@@ -31,24 +31,31 @@ public class Doctores {
     
     
     
-    @WebMethod
-    public String add(String codigo, String nombre) {
+    @WebMethod(operationName = "addDoctor")
+    public String addDoctor(String codigo, String nombre) {
         try{
-            Splay newSplay = new Splay().loadSplay();
-            Doctor tempDoc = new Doctor(codigo, nombre);
-            newSplay.Insertar(tempDoc);    
-            newSplay.save();    
+            
+            Splay newSplay = Splay.loadSplay();
+            boolean Miembro = newSplay.Miembro(codigo);
+            
+            Doctor d8 = new Doctor(codigo, nombre);
+            newSplay.Insertar(d8);	
+            newSplay.save();
+            //Doctor tempDoc = new Doctor(codigo, nombre);
+            //newSplay.Insertar(tempDoc);    
+            //newSplay.save();    
             return "Success";
         } catch (Exception e) {
             e.printStackTrace();
             return "Failed";
         }
     }
-    public String get(String codigo)
+    @WebMethod(operationName = "getDoctor")
+    public String getDoctor(String codigo)
     {
         try{
             
-            Splay newSplay = new Splay().loadSplay();
+            Splay newSplay = Splay.loadSplay();
             String result = newSplay.Buscar(codigo).getData().getNombre();
             //newBTree.save();
             return result;
@@ -58,24 +65,27 @@ public class Doctores {
             return "Failed";
         }
     }
-    public String search(String codigo){
+    @WebMethod(operationName = "searchDoctor")
+    public String searchDoctor(String codigo){
     try{
             
-            Splay newSplay = new Splay().loadSplay();
-            //JSONArray Doctores = newSplay.look(codigo);
-            String x = newSplay.look(codigo);
+            Splay newSplay = Splay.loadSplay();
+            
+            //String x = newSplay.look(codigo);
             //newBTree.save();
-            return x;
+            return newSplay.look(codigo);
  
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("FAILED");
             return null;
         }
     }
-    public String delete(String codigo){
+    @WebMethod(operationName = "removeDoctor")
+    public String removeDoctor(String codigo){
     try{
             
-            Splay newSplay = new Splay().loadSplay();
+            Splay newSplay = Splay.loadSplay();
             newSplay.Eliminar(codigo);
             //newBTree.save();
             return "Sucess";

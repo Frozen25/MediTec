@@ -28,11 +28,11 @@ public class Clientes {
      */
      
     @WebMethod(operationName = "addCliente")
-    public String addCliente(String txt) {
+    public String addCliente(String txt, String correo) {
         try{
             
             BTree newBTree = new BTree().loadBTree();
-            newBTree.insert(txt);    
+            newBTree.insert(txt+">"+correo);    
             newBTree.save();    
             return "Success";
         } catch (Exception e) {

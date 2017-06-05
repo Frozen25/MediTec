@@ -68,6 +68,70 @@ public class Caso {
         }
         
     }
+    @WebMethod(operationName = "searchCC")
+    public String searchCC(String txt) {
+        try{
+            BinarySearchTree newBST= new BinarySearchTree().loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+            String result = newBST.searchCC(txt);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        }
+        
+    }
+    
+    
+    @WebMethod(operationName = "addMedicamento")
+    public String addMedicamento(String Caso, String nombre, String precio) {
+        try{
+            BinarySearchTree newBST= new BinarySearchTree().loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+             newBST.getCaso(Caso).addMedicamentos(Caso, precio);
+            return "Sucess";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        } 
+    }
+    @WebMethod(operationName = "addExamen")
+    public String addExamen(String Caso, String nombre, String precio) {
+        try{
+            BinarySearchTree newBST= new BinarySearchTree().loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+             newBST.getCaso(Caso).addExamenes(nombre, precio);
+            return "Sucess";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        } 
+    }
+    @WebMethod(operationName = "removeExamen")
+    public String removeExamen(String Caso, String nombre) {
+        try{
+            BinarySearchTree newBST= new BinarySearchTree().loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+             newBST.getCaso(Caso).removeExamen(nombre);
+            return "Sucess";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        } 
+    }
+    @WebMethod(operationName = "removeMedicamento")
+    public String removeMedicamento(String Caso, String nombre) {
+        try{
+            BinarySearchTree newBST= new BinarySearchTree().loadBST();
+            //String result = newBST.getCaso(txt).getInfo();
+             newBST.getCaso(Caso).removeMedicamento(nombre);
+            return "Sucess";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed getting data";
+        } 
+    }
+    
     
     
     
