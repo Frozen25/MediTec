@@ -7,6 +7,9 @@
     <service name="Clientes">
       <implementation-class>Serve.Clientes</implementation-class>
     </service>
+    <service name="Doctores">
+      <implementation-class>Serve.Doctores</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

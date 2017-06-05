@@ -24,12 +24,14 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 
 
 public class BinarySearchTree {
     public   NodoArbolBinario root;
     private  String lookstack;
+    private final static  String direccion = "D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data";
     public BinarySearchTree(){
             this.root = null;
     }
@@ -491,7 +493,7 @@ public class BinarySearchTree {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Casos_Clinicos.xml"));
+            StreamResult result = new StreamResult(new File(direccion + "\\Casos_Clinicos.xml"));
 
             // Output to console for testing
             //StreamResult result = new StreamResult(System.out);
@@ -507,6 +509,92 @@ public class BinarySearchTree {
       } catch (TransformerException tfe) {
             tfe.printStackTrace();
       }
+        
+    }
+    
+    public BinarySearchTree loadBST(){
+        try {    
+            File fXmlFile = new File(direccion + "\\Casos_Clinicos.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+
+            doc.getDocumentElement().normalize();
+
+            //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+            NodeList nList = doc.getElementsByTagName("Caso");
+
+            //System.out.println("----------------------------");
+            
+            BinarySearchTree newBST = new BinarySearchTree();
+            
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                org.w3c.dom.Node nNode = nList.item(temp);
+
+                //System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+
+                if (nNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    CasoClinico CasoTemp = new CasoClinico(eElement.getAttribute("id"));
+
+                    String examenes = eElement.getElementsByTagName("Examenes").item(0).getTextContent();
+
+                    if ((!(examenes.equals("")))&&(!(examenes.equals(" "))))
+                    {
+                        String[] parts = examenes.split(";");
+                        for(int i=0;i<parts.length;i++)
+                        {
+                            if ((!(parts[i].equals("")))&&(!(parts[i].equals(" ")))){
+                            String[] dat = parts[i].split("_");
+                            CasoTemp.addExamenes(dat[0], dat[1]);
+                        }
+                        }
+                    }
+ 
+                    String medics = eElement.getElementsByTagName("Medicamentos").item(0).getTextContent();
+                    
+                    if ((!medics.equals(""))&&(!(medics.equals(" "))))
+                    {
+                        String[] parts = medics.split(";");
+                        for(int i=0;i<parts.length;i++)
+                        {
+                            if ((!(parts[i].equals("")))&&(!(parts[i].equals(" ")))){
+                            String[] dat = parts[i].split("_");
+                            CasoTemp.addMedicamentos(dat[0], dat[1]);
+                        }
+                        }
+                    }
+
+                    newBST.insert(CasoTemp);
+
+
+
+                    //System.out.println("Staff id : " + eElement.getAttribute("id"));
+                    //System.out.println("Nombre : " + eElement.getElementsByTagName("Nombre").item(0).getTextContent());
+                    //System.out.println("Examenes : " + eElement.getElementsByTagName("Examenes").item(0).getTextContent());
+                    //System.out.println("Medicamentos : " + eElement.getElementsByTagName("Medicamentos").item(0).getTextContent());
+
+
+                    }
+            }
+            
+            //print tree
+            //newBST.displayPre();
+            //newBST.save("name");
+            
+            return newBST;
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            return null;
+        }
+        
         
     }
     

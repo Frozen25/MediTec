@@ -3,6 +3,8 @@ import java.io.*;
 import java.lang.*;
 import java.io.File;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,10 +16,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
+import org.json.*;
+import org.w3c.dom.NodeList;
 
 //Definicion del arbol splay	
-class Splay{
+public class Splay{
   public int cont;
   public String codigot;
   public NodoSplay raiz;
@@ -25,6 +28,7 @@ class Splay{
   public NodoSplay auxh;
   public boolean bandera = true;
   public String searchresult = "";
+  private static final String direccion = "D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data";
   
   //Inserta un elemento en un arbol splay
   public NodoSplay Insertar (Doctor data){
@@ -441,7 +445,7 @@ class Splay{
     InorderSearch(raiz, id);
     if (!searchresult.equals("")){
         String doctores [] = searchresult.split(">");
-
+////////ORDENAMIENTO DE DOCTORES
         for (int top = 1 ; top < doctores.length ; top++)
         {
             String item = doctores [top];
@@ -454,21 +458,35 @@ class Splay{
 
         }
 
-        String resultado = "";
-
+        //String resultado = "";
+        JSONArray Doctores= new JSONArray();
+        
         for (int i = 0; i < doctores.length; i++) {
+            JSONObject obj = new JSONObject();
+            try {
+                String doc [] = doctores[i].split(",");
+                obj.put("Codigo", doc[0]);
+                obj.put("Nombre", doc[1]);
+                Doctores.put(obj);
+                
+            } catch (JSONException ex) {
+                Logger.getLogger(Splay.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-               resultado += doctores[i] + ">";
+            
+            
+            
+               //resultado += doctores[i] + ">";
             
         }
-        resultado = resultado.substring(0, resultado.length()-1);
-
-        return resultado;
+        //resultado = resultado.substring(0, resultado.length()-1);
+        String x = Doctores.toString();
+        return x;
         
 
     }
     
-    return "";
+    return null;
 }
 
   
@@ -561,7 +579,7 @@ public void save()
           TransformerFactory transformerFactory = TransformerFactory.newInstance();
           Transformer transformer = transformerFactory.newTransformer();
           DOMSource source = new DOMSource(doc);
-          StreamResult result = new StreamResult(new File("D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data" + "\\Doctores.xml"));
+          StreamResult result = new StreamResult(new File(direccion + "\\Doctores.xml"));
 
           // Output to console for testing
           //StreamResult result = new StreamResult(System.out);
@@ -579,6 +597,63 @@ public void save()
     }
       
   }
+  
+  public Splay loadSplay(){
+        try {
+
+            File fXmlFile = new File(direccion+"\\Doctores.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+
+            doc.getDocumentElement().normalize();
+
+            //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+            NodeList nList = doc.getElementsByTagName("Doctor");
+
+            //System.out.println("----------------------------");
+            
+            Splay nuevoSplay=new Splay();
+            
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                org.w3c.dom.Node nNode = nList.item(temp);
+
+                //System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+
+                if (nNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    
+                    String nombre = eElement.getElementsByTagName("Nombre").item(0).getTextContent();
+                    
+                    String codigo = eElement.getElementsByTagName("Codigo").item(0).getTextContent();
+
+                    Doctor tempDoc = new Doctor(codigo, nombre);
+                    nuevoSplay.Insertar(tempDoc);
+
+
+
+                    }
+            }
+            
+            //print tree
+            System.out.println(nuevoSplay.look(""));
+            
+            //newBST.save("name");
+            return nuevoSplay;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        
+        
+    }
   
   
   

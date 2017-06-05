@@ -10,6 +10,10 @@ public class NodoSplay{
 	    Hiz = null;
 	    Hde = null;
   }
+  public Doctor getData(){
+      return datos;
+  }
+  
   
 }
 	
