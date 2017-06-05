@@ -32,6 +32,10 @@ public class cita {
     {
         this.paciente = nuevoPaciente;
     }
+    public String getInfo(){
+        return Integer.toString(numCita)+">"+paciente+">"+Float.toString(pago);
+    
+    }
 	
 
 }
