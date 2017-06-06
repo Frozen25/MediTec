@@ -31,6 +31,7 @@ import org.w3c.dom.NodeList;
 public class BinarySearchTree {
     public   NodoArbolBinario root;
     private  String lookstack;
+    private int contador = 0;
     private final static  String direccion = "D:\\0-Tec\\Datos 1\\proyecto 2\\temp1data";
     public BinarySearchTree(){
             this.root = null;
@@ -356,8 +357,8 @@ public class BinarySearchTree {
     
     
     public String searchCC(String id){
-        lookstack = "";
-        
+        lookstack = "<body>"+"Nombre,, Profundidad , Altura , TamañoRuta , Ruta";
+        contador = 0;
         int depth = 0;
         String path = "";
         searchCC(root,id, depth, path );
@@ -372,9 +373,10 @@ public class BinarySearchTree {
             searchCC(root.left,  id, depth +1 , path+ "-" + root.getData().getName()   );
             if (root.getData().getName().contains(id))
             {
-                lookstack += ( root.getData().getName()+ "," 
-                         + "," + Integer.toString(depth) + "," + Integer.toString( findHeight(root) ) +
-                        "," + Integer.toString(depth) +  "," + path +"-"+ root.getData().getName() +">"     );
+                contador=2;
+                lookstack += "<h"+contador+">" +( root.getData().getName()+ ",\t" 
+                         + ",\t" + Integer.toString(depth) + ",\t" + Integer.toString( findHeight(root) ) +
+                        ",\t" + Integer.toString(depth) +  ",\t" + path +"-"+ root.getData().getName() +"\n" +"</h"+contador+">"    );
             }
             searchCC(root.right,  id, depth+1, path+ "-" + root.getData().getName()  );
         }

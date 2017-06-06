@@ -36,7 +36,7 @@ public class Doctores {
         try{
             
             Splay newSplay = Splay.loadSplay();
-            boolean Miembro = newSplay.Miembro(codigo);
+            
             
             Doctor d8 = new Doctor(codigo, nombre);
             newSplay.Insertar(d8);	

@@ -56,11 +56,11 @@ public class Citas {
     
     
     @WebMethod(operationName = "addMonto")
-    public String addMonto(String numero) {
+    public String addMonto(String numero, String monto) {
         try{
             
             ArbolAVL newAVL = ArbolAVL.loadAVL();
-            newAVL.get(Integer.parseInt(numero)).agregarMonto(Float.valueOf(numero));
+            newAVL.get(Integer.parseInt(numero)).agregarMonto(Float.valueOf(monto));
             newAVL.save();    
             return "Success";
         } catch (Exception e) {

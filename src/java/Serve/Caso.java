@@ -73,7 +73,7 @@ public class Caso {
         try{
             BinarySearchTree newBST= new BinarySearchTree().loadBST();
             //String result = newBST.getCaso(txt).getInfo();
-            String result = newBST.searchCC(txt);
+            String result = newBST.searchCC(txt) + "</body>";
             return result;
         } catch (Exception e) {
             e.printStackTrace();
