@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/TestServer/AddCacoClinico?wsdl" uri="src/conf/xml-resources/web-service-references/AddCacoClinico/wsdl/localhost_8080/TestServer/AddCacoClinico.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/AddCacoClinico?xsd=1" uri="src/conf/xml-resources/web-service-references/AddCacoClinico/wsdl/localhost_8080/TestServer/AddCacoClinico.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/AddCasoClinico?wsdl" uri="src/conf/xml-resources/web-service-references/AddCasoClinico/wsdl/localhost_8080/TestServer/AddCasoClinico.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/AddCasoClinico?xsd=1" uri="src/conf/xml-resources/web-service-references/AddCasoClinico/wsdl/localhost_8080/TestServer/AddCasoClinico.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/HelloService?wsdl" uri="src/conf/xml-resources/web-service-references/HelloService/wsdl/localhost_8080/TestServer/HelloService.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/HelloService?xsd=1" uri="src/conf/xml-resources/web-service-references/HelloService/wsdl/localhost_8080/TestServer/HelloService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/Clientes?wsdl" uri="src/conf/xml-resources/web-service-references/Clientes/wsdl/localhost_8080/TestServer/Clientes.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/Clientes?xsd=1" uri="src/conf/xml-resources/web-service-references/Clientes/wsdl/localhost_8080/TestServer/Clientes.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/Doctores?wsdl" uri="src/conf/xml-resources/web-service-references/Doctores/wsdl/localhost_8080/TestServer/Doctores.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/Doctores?xsd=1" uri="src/conf/xml-resources/web-service-references/Doctores/wsdl/localhost_8080/TestServer/Doctores.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/Citas?wsdl" uri="src/conf/xml-resources/web-service-references/Citas/wsdl/localhost_8080/TestServer/Citas.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/Citas?xsd=1" uri="src/conf/xml-resources/web-service-references/Citas/wsdl/localhost_8080/TestServer/Citas.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TestServer/Caso?wsdl" uri="src/conf/xml-resources/web-service-references/Caso/wsdl/localhost_8080/TestServer/Caso.wsdl"/>
+    <system systemId="http://localhost:8080/TestServer/Caso?xsd=1" uri="src/conf/xml-resources/web-service-references/Caso/wsdl/localhost_8080/TestServer/Caso.xsd_1.xsd"/>
+</catalog>

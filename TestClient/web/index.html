@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form name="f1" method="get" action="Caso_add">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="addCC">
+        </form>
+        <form name="f2" method="get" action="Caso_remove">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="RemoveCC">
+        </form>
+        <form name="f3" method="get" action="Caso_get">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="getCC">
+        </form>
+        <form name="f4" method="get" action="Client_add">
+            <input type="text" name="nm">
+            <input type="text" name="correo">
+            <input type="submit" name="submit" value="Client_add">
+        </form>
+        <form name="f5" method="get" action="Client_remove">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="Client_remove">
+        </form>
+        <form name="f6" method="get" action="Client_get">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="Client_get">
+        </form>
+        <form name="f7" method="get" action="Doctor_add">
+            <input type="text" name="nm">
+            <input type="text" name="code">
+            <input type="submit" name="submit" value="Doctor_add">
+        </form>
+        <form name="f8" method="get" action="Doctor_remove">
+            <input type="text" name="name">
+            <input type="submit" name="submit" value="Doctor_remove">
+        </form>
+        <form name="f9" method="get" action="Doctor_search">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="Doctor_search">
+        </form>
+         <form name="f10" method="get" action="Cita_add">
+            <input type="text" name="paciente">
+            <input type="text" name="numero">
+            <input type="submit" name="submit" value="Cita_add">
+        </form>
+        <form name="f11" method="get" action="Cita_get">
+            <input type="text" name="name">
+            <input type="submit" name="submit" value="Cita_get">
+        </form>
+        <form name="f12" method="get" action="Cita_agregarMonto">
+            <input type="text" name="cita">
+            <input type="text" name="monto">
+            <input type="submit" name="submit" value="Cita_agregarMonto">
+        </form>
+        <form name="f13" method="get" action="Caso_addEx">
+            <input type="text" name="caso">
+            <input type="text" name="nombre">
+            <input type="text" name="precio">
+            <input type="submit" name="submit" value="Caso_addEx">
+        </form>
+        <form name="f14" method="get" action="Caso_addMed">
+            <input type="text" name="caso">
+            <input type="text" name="nombre">
+            <input type="text" name="precio">
+            <input type="submit" name="submit" value="Caso_addMed">
+        </form>
+        <form name="f15" method="get" action="Caso_remEx">
+            <input type="text" name="caso">
+            <input type="text" name="nombre">
+            <input type="submit" name="submit" value="Caso_remEx">
+        </form>
+        <form name="f16" method="get" action="Caso_remMed">
+            <input type="text" name="caso">
+            <input type="text" name="nombre">
+            <input type="submit" name="submit" value="Caso_remMed">
+        </form>
+        <form name="f17" method="get" action="Caso_search">
+            <input type="text" name="nm">
+            <input type="submit" name="submit" value="Caso_search">
+        </form>
+    </body>
+</html>
